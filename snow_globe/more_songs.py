@@ -39,7 +39,7 @@ E5 = 659
 # Set up the songs!
 
 # Jingle Bells
-jingle_bells_song = [
+jingle_bells = [
         [E4, quarter_note],
         [E4, quarter_note],
         [E4, half_note],
@@ -54,7 +54,7 @@ jingle_bells_song = [
     ]
 
 # Let It Snow
-let_it_snow_song = [
+let_it_snow = [
     [B4, eighth_note],
     [A4, eighth_note],
     [G4, quarter_note],
@@ -77,7 +77,7 @@ let_it_snow_song = [
 ]
 
 # Linus & Lucy (A Peanuts Christmas song)
-linus_and_lucy_song = [
+linus_and_lucy = [
     [C3, eighth_note],
     [G3, eighth_note],
     [C4, eighth_note],

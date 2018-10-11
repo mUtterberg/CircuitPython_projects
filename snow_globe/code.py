@@ -59,7 +59,7 @@ D5 = 587
 E5 = 659
 
 # Jingle Bells
-jingle_bells_song = [
+jingle_bells = [
         [E4, quarter_note],
         [E4, quarter_note],
         [E4, half_note],
@@ -74,7 +74,7 @@ jingle_bells_song = [
     ]
 
 # Let It Snow
-let_it_snow_song = [
+let_it_snow = [
     [B4, eighth_note],
     [A4, eighth_note],
     [G4, quarter_note],
@@ -97,7 +97,7 @@ let_it_snow_song = [
 ]
 
 # Linus & Lucy (A Peanuts Christmas song)
-linus_and_lucy_song = [
+linus_and_lucy = [
     [C3, eighth_note],
     [G3, eighth_note],
     [C4, eighth_note],
@@ -135,7 +135,6 @@ linus_and_lucy_song = [
     [E5, whole_note],
 ]
 
-# pylint: disable=too-many-locals
 def play_song(song_number):
     # Preloaded with...
     # 1: Jingle bells
@@ -145,21 +144,26 @@ def play_song(song_number):
     # Choose to play a single song
     if song_number == 1:
         # Choose to play Jingle Bells
-        song = jingle_bells_song
+        song = jingle_bells
     # pylint: disable=consider-using-enumerate
 
     elif song_number == 2:
         # Choose to play Let it Snow
-        song = let_it_snow_song
+        song = let_it_snow
     
     elif song_number == 3:
         # Choose to play Linus & Lucy
-        song = linus_and_lucy_song
+        song = linus_and_lucy
 
+    # Play each tone in the chosen song!
     for n in range(len(song)):
-        cpx.start_tone(song[n][0])
-        time.sleep(song[n][1])
-        cpx.stop_tone()
+        # Break song playback if user interrupts with new shake
+        if rolling == False:
+            cpx.start_tone(song[n][0])
+            time.sleep(song[n][1])
+            cpx.stop_tone()
+        else:
+            break
 
 # Fade pixels in and out (once)
 def fade_pixels(fade_color):
@@ -211,11 +215,11 @@ while True:
         roll_start_time = time.monotonic()
         new_roll = True
         rolling = True
-        print('shaken')
 
     # Rolling momentum
-    # Keep rolling for a period of time even after shaking stops
-    if new_roll:
+    # Roll lights for 2 seconds after shaking stops
+    # if new_roll for 2 seconds after start, elif new_roll for 2 seconds after stop
+    elif new_roll:
         if time.monotonic() - roll_start_time > 2:  # seconds to run
             rolling = False
 

@@ -21,7 +21,7 @@ new_roll = False
 rolling = False
 
 # Set number of songs here for randomization
-song_numbers = [1, 2]
+song_numbers = [1, 2, 3]
 
 # pick from colors defined above, e.g., RED, GREEN, BLUE, WHITE, etc.
 def fade_pixels(fade_color):
@@ -59,6 +59,7 @@ def play_song(song_number):
 
     # pylint: disable=unused-variable
     # set up note values
+    C3 = 131
     G3 = 196
     A3 = 220
     Bb3 = 233
@@ -75,6 +76,9 @@ def play_song(song_number):
     A4 = 440
     Bb4 = 466
     B4 = 494
+    C5 = 523
+    D5 = 587
+    E5 = 659
 
     if song_number == 1:
         # jingle bells
@@ -97,7 +101,7 @@ def play_song(song_number):
             time.sleep(jingle_bells_song[n][1])
             cpx.stop_tone()
 
-    if song_number == 2:
+    elif song_number == 2:
         # Let It Snow
         let_it_snow_song = [
             [B4, eighth_note],
@@ -125,8 +129,52 @@ def play_song(song_number):
             cpx.start_tone(let_it_snow_song[n][0])
             time.sleep(let_it_snow_song[n][1])
             cpx.stop_tone()
+    
+    elif song_number == 3:
+        # Let It Snow
+        linus_and_lucy_song = [
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [C4, eighth_note],
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [C4, dotted_quarter_note],
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [A4, eighth_note],
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [A4, dotted_quarter_note],
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [C4, eighth_note],
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [C4, dotted_quarter_note],
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [A4, eighth_note],
+            [C3, eighth_note],
+            [G3, eighth_note],
+            [A4, dotted_quarter_note],
+            [C5, eighth_note],
+            [D5, eighth_note],
+            [E5, quarter_note],
+            [E5, eighth_note],
+            [D5, eighth_note],
+            [C5, quarter_note],
+            [D5, dotted_quarter_note],
+            [C5, whole_note],
+            [C5, quarter_note],
+            [D5, eighth_note],
+            [E5, whole_note],
+        ]
 
-
+        for n in range(len(linus_and_lucy_song)):
+            cpx.start_tone(linus_and_lucy_song[n][0])
+            time.sleep(linus_and_lucy_song[n][1])
+            cpx.stop_tone()
+        
 play_song(1)  # play music on start
 
 # Loop forever

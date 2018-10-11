@@ -22,6 +22,7 @@ rolling = False
 
 # Set number of songs here for randomization
 song_numbers = [1, 2, 3]
+resting_colors = [WHITE, RED, GREEN, BLUE, SKYBLUE]
 
 # pick from colors defined above, e.g., RED, GREEN, BLUE, WHITE, etc.
 def fade_pixels(fade_color):
@@ -40,14 +41,14 @@ def fade_pixels(fade_color):
             cpx.pixels[i] = fade_color
 
 
-# fade in the pixels
-fade_pixels(GREEN)
+
 
 
 # pylint: disable=too-many-locals
 def play_song(song_number):
     # 1: Jingle bells
     # 2: Let It Snow
+    # 3: Linus & Lucy
 
     # set up time signature
     whole_note = 1.5  # adjust this to change tempo of everything
@@ -80,9 +81,12 @@ def play_song(song_number):
     D5 = 587
     E5 = 659
 
-    if song_number == 1:
-        # jingle bells
-        jingle_bells_song = [
+    ## =====================================
+    ## We are defining ALL of our songs here
+    ## =====================================
+
+    # Jingle Bells
+    jingle_bells_song = [
             [E4, quarter_note],
             [E4, quarter_note],
             [E4, half_note],
@@ -95,87 +99,97 @@ def play_song(song_number):
             [D4, eighth_note],
             [E4, whole_note],
         ]
+
+    # Let It Snow
+    let_it_snow_song = [
+        [B4, eighth_note],
+        [A4, eighth_note],
+        [G4, quarter_note],
+        [G4, eighth_note],
+        [F4, eighth_note],
+        [E4, quarter_note],
+        [E4, eighth_note],
+        [D4, eighth_note],
+        [C4, whole_note],
+        [G3, eighth_note],
+        [G3, eighth_note],
+        [G4, eighth_note],
+        [G4, eighth_note],
+        [F4, quarter_note],
+        [E4, quarter_note],
+        [D4, eighth_note],
+        [C4, quarter_note],
+        [G3, whole_note],
+
+    ]
+
+    # Linus & Lucy (A Peanuts Christmas song)
+    linus_and_lucy_song = [
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [C4, eighth_note],
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [C4, dotted_quarter_note],
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [A3, eighth_note],
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [A3, dotted_quarter_note],
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [C4, eighth_note],
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [C4, dotted_quarter_note],
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [A3, eighth_note],
+        [C3, eighth_note],
+        [G3, eighth_note],
+        [A3, dotted_quarter_note],
+        [C5, quarter_note],
+        [D5, eighth_note],
+        [E5, quarter_note],
+        [E5, eighth_note],
+        [D5, eighth_note],
+        [C5, quarter_note],
+        [D5, dotted_quarter_note],
+        [C5, half_note],
+        [C5, quarter_note],
+        [D5, eighth_note],
+        [E5, whole_note],
+    ]
+
+    # Choose to play a single song
+    if song_number == 1:
+        # Choose to play Jingle Bells
+        song = jingle_bells_song
     # pylint: disable=consider-using-enumerate
-        for n in range(len(jingle_bells_song)):
-            cpx.start_tone(jingle_bells_song[n][0])
-            time.sleep(jingle_bells_song[n][1])
-            cpx.stop_tone()
 
     elif song_number == 2:
-        # Let It Snow
-        let_it_snow_song = [
-            [B4, eighth_note],
-            [A4, eighth_note],
-            [G4, quarter_note],
-            [G4, eighth_note],
-            [F4, eighth_note],
-            [E4, quarter_note],
-            [E4, eighth_note],
-            [D4, eighth_note],
-            [C4, whole_note],
-            [G3, eighth_note],
-            [G3, eighth_note],
-            [G4, eighth_note],
-            [G4, eighth_note],
-            [F4, quarter_note],
-            [E4, quarter_note],
-            [D4, eighth_note],
-            [C4, quarter_note],
-            [G3, whole_note],
-
-        ]
-
-        for n in range(len(let_it_snow_song)):
-            cpx.start_tone(let_it_snow_song[n][0])
-            time.sleep(let_it_snow_song[n][1])
-            cpx.stop_tone()
+        # Choose to play Let it Snow
+        song = let_it_snow_song
     
     elif song_number == 3:
-        # Let It Snow
-        linus_and_lucy_song = [
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [C4, eighth_note],
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [C4, dotted_quarter_note],
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [A3, eighth_note],
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [A3, dotted_quarter_note],
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [C4, eighth_note],
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [C4, dotted_quarter_note],
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [A3, eighth_note],
-            [C3, eighth_note],
-            [G3, eighth_note],
-            [A3, dotted_quarter_note],
-            [C5, eighth_note],
-            [D5, eighth_note],
-            [E5, quarter_note],
-            [E5, eighth_note],
-            [D5, eighth_note],
-            [C5, quarter_note],
-            [D5, dotted_quarter_note],
-            [C5, whole_note],
-            [C5, quarter_note],
-            [D5, eighth_note],
-            [E5, whole_note],
-        ]
+        # Choose to play Linus & Lucy
+        song = linus_and_lucy_song
 
-        for n in range(len(linus_and_lucy_song)):
-            cpx.start_tone(linus_and_lucy_song[n][0])
-            time.sleep(linus_and_lucy_song[n][1])
-            cpx.stop_tone()
-        
-play_song(1)  # play music on start
+    for n in range(len(song)):
+        cpx.start_tone(song[n][0])
+        time.sleep(song[n][1])
+        cpx.stop_tone()
+
+
+## ==========================================================
+## Code below here is what initiates our snow globe activity!
+## ==========================================================
+
+# fade in the pixels on start
+fade_pixels(GREEN)
+# play music on start - choose what song number you want to hear on startup!
+play_song(1)
 
 # Loop forever
 while True:
@@ -220,9 +234,10 @@ while True:
     elif new_roll:
         new_roll = False
         song_number = random.choice(song_numbers)
+        roll_color = random.choice(resting_colors)
         # play a song!
         play_song(song_number)
         # return to resting color
-        fade_pixels(GREEN)
+        fade_pixels(roll_color)
         cpx.pixels.brightness = 0.05
-        cpx.pixels.fill(GREEN)
+        cpx.pixels.fill(roll_color)

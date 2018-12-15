@@ -24,7 +24,7 @@ rolling = False
 
 # Set number of songs here for randomization
 song_numbers = [1, 2, 3]
-resting_colors = [WHITE, RED, GREEN, BLUE, SKYBLUE]
+resting_colors = [WHITE, RED, GREEN, BLUE, SKYBLUE, PURPLE, PINK]
 
 ## =====================================
 ## We are defining ALL of our music here

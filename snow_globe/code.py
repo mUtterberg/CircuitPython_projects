@@ -6,7 +6,7 @@ import random
 
 from adafruit_circuitplayground.express import cpx
 
-ROLL_THRESHOLD = 30  # Total acceleration
+ROLL_THRESHOLD = 20  # Total acceleration
 cpx.pixels.brightness = 0.1  # set brightness value
 
 WHITE = (65, 65, 65)
@@ -14,6 +14,8 @@ RED = (220, 0, 0)
 GREEN = (0, 220, 0)
 BLUE = (0, 0, 220)
 SKYBLUE = (0, 20, 200)
+PURPLE = (148, 0, 211)
+PINK = (255, 182, 193)
 BLACK = (0, 0, 0)
 
 # Initialize the global states
@@ -168,15 +170,15 @@ def play_song(song_number):
 # Fade pixels in and out (once)
 def fade_pixels(fade_color):
     # fade up
-    for j in range(25):
-        pixel_brightness = (j * 0.01)
+    for j in range(12):
+        pixel_brightness = (j * 0.02)
         cpx.pixels.brightness = pixel_brightness
         for i in range(10):
             cpx.pixels[i] = fade_color
 
     # fade down
-    for k in range(25):
-        pixel_brightness = (0.25 - (k * 0.01))
+    for k in range(12):
+        pixel_brightness = (0.25 - (k * 0.02))
         cpx.pixels.brightness = pixel_brightness
         for i in range(10):
             cpx.pixels[i] = fade_color
